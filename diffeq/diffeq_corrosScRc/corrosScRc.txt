@@ -1,4 +1,4 @@
-transition: (s1 s2) (t1 t2)
+Transition: (s1 s2) (t1 t2)
 
 (s1 s2)
 cond:
@@ -18,7 +18,7 @@ mul_ln14 = dx * u;
 shl_ln15 = dx << 2;
 t4 = shl_ln15 - dx;
 
-transition: (s2 s3) (t2 t3)
+Transition: (s2 s3) (t2 t3)
 
 (s2 s3)
 cond:
@@ -35,7 +35,7 @@ t3 = mul_ln14 * t1;
 t5 = y_read * t4;
 
 
-transition: (s3 s4) (t3 t4)
+Transition: (s3 s4) (t3 t4)
 
 (s3 s4)
 cond:
@@ -50,7 +50,7 @@ oper:
 t6 = u - t3;
 sub_ln18 = t6 - t5;
 
-transition: (s4 s5) (t4 t5)
+Transition: (s4 s5) (t4 t5)
 
 (s4 s5)
 cond:
@@ -64,7 +64,7 @@ True
 oper:
 t7 = dx * sub_ln18;
 
-transition: (s5 se) (t5 te)
+Transition: (s5 se) (t5 te)
 
 (s5 se)
 cond:
