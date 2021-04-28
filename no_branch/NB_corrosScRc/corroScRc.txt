@@ -1,0 +1,257 @@
+Transition: (s1 s2) (t1 t2)
+
+(s1 s2)
+cond:
+True
+oper:
+op8_reg_311 =   ( ( do_twos_complement(  ( G2 & 4294967295 )  , 32 )  * do_twos_complement(  ( i3 & 4294967295 )  , 32 )  ) & 4294967295 ) ;
+op7_reg_306 =   ( ( do_twos_complement(  ( G1 & 4294967295 )  , 32 )  * do_twos_complement(  ( i4 & 4294967295 )  , 32 )  ) & 4294967295 ) ;
+op6_reg_301 =   ( ( do_twos_complement(  ( G2 & 4294967295 )  , 32 )  * do_twos_complement(  ( i4 & 4294967295 )  , 32 )  ) & 4294967295 ) ;
+op5_reg_296 =   ( ( do_twos_complement(  ( G1 & 4294967295 )  , 32 )  * do_twos_complement(  ( i3 & 4294967295 )  , 32 )  ) & 4294967295 ) ;
+
+(t1 t2)
+cond:
+True
+oper:
+op5 = G1 * i3;
+op6 = G2 * i4;
+op7 = G1 * i4;
+op8 = G2 * i3;
+
+Transition: (s2 s3) (t2 t3)
+
+(s2 s3)
+cond:
+True
+oper:
+op14_reg_324 =   ( (  ( ( op8_reg_311__temp  + ( i6__temp  & 4294967295 )  ) & 4294967295 )  + op7_reg_306__temp  ) & 4294967295 ) ;
+op13_reg_316 =   ( (  ( ( op6_reg_301__temp  + ( i5__temp  & 4294967295 )  ) & 4294967295 )  + op5_reg_296__temp  ) & 4294967295 ) ;
+
+(t2 t3)
+cond:
+True
+oper:
+add_ln25 = op6 + i5;
+op13 = add_ln25 + op5;
+add_ln27 = op8 + i6;
+op14 = add_ln27 + op7;
+
+Transition: (s3 s4) (t3 t4)
+
+(s3 s4)
+cond:
+True
+oper:
+op18_reg_337 =   ( ( do_twos_complement( op14_reg_324__temp  , 32 )  * do_twos_complement(  ( G2 & 4294967295 )  , 32 )  ) & 4294967295 ) ;
+op17_reg_332 =   ( ( do_twos_complement( op13_reg_316__temp  , 32 )  * do_twos_complement(  ( G1 & 4294967295 )  , 32 )  ) & 4294967295 ) ;
+mul_ln33_reg_342 =   ( ( do_twos_complement( op14_reg_324__temp  , 32 )  * do_twos_complement(  ( G1 & 4294967295 )  , 32 )  ) & 4294967295 ) ;
+mul_ln33_1_reg_347 =   ( ( do_twos_complement( op13_reg_316__temp  , 32 )  * do_twos_complement(  ( G2 & 4294967295 )  , 32 )  ) & 4294967295 ) ;
+
+(t3 t4)
+cond:
+True
+oper:
+op17 = op13 * G1;
+op18 = op14 * G2;
+mul_ln33 = op14 * G1;
+mul_ln33_1 = op13 * G2;
+
+Transition: (s4 s5) (t4 t5)
+
+(s4 s5)
+cond:
+True
+oper:
+op20_reg_358 =   ( ( op17_reg_332__temp  + op18_reg_337__temp  ) & 4294967295 ) ;
+op19_reg_352 =   ( ( do_twos_complement( mul_ln33_1_reg_347__temp  , 32 )  * do_twos_complement( mul_ln33_reg_342__temp  , 32 )  ) & 4294967295 ) ;
+
+(t4 t5)
+cond:
+True
+oper:
+op19 = mul_ln33_1 * mul_ln33;
+op20 = op17 + op18;
+
+Trasition: (s5 s6) (t5 t6)
+
+(s5 s6)
+cond:
+True
+oper:
+tmp_reg_384 =   ( ( do_twos_complement( op20_reg_358__temp  , 32 )  + do_twos_complement(  ( i1 & 4294967295 )  , 32 )  ) & 4294967295 ) ;
+tmp2_reg_389 =   ( ( do_twos_complement( op19_reg_352__temp  , 32 )  + do_twos_complement(  ( i2 & 4294967295 )  , 32 )  ) & 4294967295 ) ;
+op2_reg_369 =   ( ( do_twos_complement(  ( GG2 & 4294967295 )  , 32 )  * do_twos_complement(  ( i2 & 4294967295 )  , 32 )  ) & 4294967295 ) ;
+op22_reg_379 =   ( ( do_twos_complement( op19_reg_352__temp  , 32 )  * do_twos_complement(  ( G2 & 4294967295 )  , 32 )  ) & 4294967295 ) ;
+op21_reg_374 =   ( ( do_twos_complement( op20_reg_358__temp  , 32 )  * do_twos_complement(  ( G1 & 4294967295 )  , 32 )  ) & 4294967295 ) ;
+op1_reg_364 =   ( ( do_twos_complement(  ( GG1 & 4294967295 )  , 32 )  * do_twos_complement(  ( i1 & 4294967295 )  , 32 )  ) & 4294967295 ) ;
+
+(t5 t6)
+cond:
+True
+oper:
+op1 = GG1 * i1;
+op2 = GG2 * i2;
+op21 = op20 * G1;
+op22 = op19 * G2;
+tmp = op20 + i1;
+tmp2 = op19 + i2;
+
+Transition: (s6 s7) (t6 t7)
+
+(s6 s7)
+cond:
+True
+oper:
+tmp3_reg_405 =   ( ( do_twos_complement( tmp2_reg_389__temp  , 32 )  * do_twos_complement(  ( G1 & 4294967295 )  , 32 )  ) & 4294967295 ) ;
+tmp1_reg_400 =   ( ( do_twos_complement( tmp_reg_384__temp  , 32 )  * do_twos_complement(  ( G2 & 4294967295 )  , 32 )  ) & 4294967295 ) ;
+op27_reg_394 =   ( (  ( ( op2_reg_369__temp  + op21_reg_374__temp  ) & 4294967295 )  +  ( ( op1_reg_364__temp  + op22_reg_379__temp  ) & 4294967295 )  ) & 4294967295 ) ;
+
+(t6 t7)
+cond:
+True
+oper:
+add_ln41 = op1 + op22;
+add_ln41_1 = op2 + op21;
+op27 = add_ln41_1 + add_ln41;
+tmp1 = tmp * G2;
+tmp3 = tmp2 * G1;
+
+Transition: (s7 se) (t7 te)
+
+(s7 se)
+cond:
+True
+oper:
+ap_return1_ap_vld = 1;
+o1_ap_vld =  1;
+o2_ap_vld =  1;
+ap_return1 =  ( (  ( ( do_twos_complement( op14_reg_324 , 32 )  + do_twos_complement( op27_reg_394 , 32 )  ) & 4294967295 )  +  ( ( do_twos_complement( op13_reg_316 , 32 )  + do_twos_complement(  ( ( tmp3_reg_405 + tmp1_reg_400 ) & 4294967295 )  , 32 )  ) & 4294967295 )  ) & 4294967295 ) ;
+o1 =   ( op13_reg_316__temp  & 4294967295 ) ;
+o2 =   ( op14_reg_324__temp  & 4294967295 ) ;
+o3 =   ( op27_reg_394__temp  & 4294967295 ) ;
+o4 =   (  ( ( tmp3_reg_405__temp  + tmp1_reg_400__temp  ) & 4294967295 )  & 4294967295 ) ;
+
+(t7 te)
+cond:
+True
+oper:
+*o1 = op13;
+*o2 = op14;
+*o3 = op27;
+op28 = tmp3 + tmp1;
+*o4 = op28;
+add_ln46 = op13 + op28;
+add_ln46_1 = op14 + op27;
+add_ln46_2 = add_ln46_1 + add_ln46;	
+*ap_return1 = add_ln46_2;	
+
+mapping:
+
+(s1 t1)
+::op5_reg_296 == ::op5
+::op6_reg_301 == ::op6
+::op7_reg_306 == ::op7
+::op8_reg_311 == ::op8
+
+(s2 t2)
+::op13_reg_316 == ::op13
+::op14_reg_324 == ::op14
+::op5_reg_296 == ::op5
+::op6_reg_301 == ::op6
+::op7_reg_306 == ::op7
+::op8_reg_311 == ::op8
+
+(s3 t3)
+::mul_ln33_1_reg_347 == ::mul_ln33_1
+::mul_ln33_reg_342 == ::mul_ln33
+::op13_reg_316 == ::op13
+::op14_reg_324 == ::op14
+::op17_reg_332 == ::op17
+::op18_reg_337 == ::op18
+::op5_reg_296 == ::op5
+::op6_reg_301 == ::op6
+::op7_reg_306 == ::op7
+::op8_reg_311 == ::op8
+
+(s4 t4)
+::mul_ln33_1_reg_347 == ::mul_ln33_1
+::mul_ln33_reg_342 == ::mul_ln33
+::op13_reg_316 == ::op13
+::op14_reg_324 == ::op14
+::op19_reg_352 == ::op19
+::op20_reg_358 == ::op20
+::op17_reg_332 == ::op17
+::op18_reg_337 == ::op18
+::op5_reg_296 == ::op5
+::op6_reg_301 == ::op6
+::op7_reg_306 == ::op7
+::op8_reg_311 == ::op8
+
+(s5 t5)
+::mul_ln33_1_reg_347 == ::mul_ln33_1
+::mul_ln33_reg_342 == ::mul_ln33
+::op13_reg_316 == ::op13
+::op14_reg_324 == ::op14
+::op19_reg_352 == ::op19
+::op20_reg_358 == ::op20
+::tmp2_reg_389 == ::tmp2
+::tmp_reg_384 == ::tmp
+::op17_reg_332 == ::op17
+::op18_reg_337 == ::op18
+::op1_reg_364 == ::op1
+::op21_reg_374 == ::op21
+::op22_reg_379 == ::op22
+::op2_reg_369 == ::op2
+::op5_reg_296 == ::op5
+::op6_reg_301 == ::op6
+::op7_reg_306 == ::op7
+::op8_reg_311 == ::op8
+
+(s6 t6)
+::mul_ln33_1_reg_347 == ::mul_ln33_1
+::mul_ln33_reg_342 == ::mul_ln33
+::op13_reg_316 == ::op13
+::op14_reg_324 == ::op14
+::op19_reg_352 == ::op19
+::op20_reg_358 == ::op20
+::tmp2_reg_389 == ::tmp2
+::tmp_reg_384 == ::tmp
+::op17_reg_332 == ::op17
+::op18_reg_337 == ::op18
+::op1_reg_364 == ::op1
+::op21_reg_374 == ::op21
+::op22_reg_379 == ::op22
+::op27_reg_394 == ::op27
+::op2_reg_369 == ::op2
+::op5_reg_296 == ::op5
+::op6_reg_301 == ::op6
+::op7_reg_306 == ::op7
+::op8_reg_311 == ::op8
+::tmp1_reg_400 == ::tmp1
+::tmp3_reg_405 == ::tmp3
+
+(s7 t7)
+::ap_return1 == ::add_ln46_2
+::ap_return1 == ::ap_return1_temp
+::o1 == ::op13
+::o2 == ::op14
+::o3 == ::op27
+::o4 == ::op28
+::mul_ln33_1_reg_347 == ::mul_ln33_1
+::mul_ln33_reg_342 == ::mul_ln33
+::op19_reg_352 == ::op19
+::op20_reg_358 == ::op20
+::tmp2_reg_389 == ::tmp2
+::tmp_reg_384 == ::tmp
+::op17_reg_332 == ::op17
+::op18_reg_337 == ::op18
+::op1_reg_364 == ::op1
+::op21_reg_374 == ::op21
+::op22_reg_379 == ::op22
+::op2_reg_369 == ::op2
+::op5_reg_296 == ::op5
+::op6_reg_301 == ::op6
+::op7_reg_306 == ::op7
+::op8_reg_311 == ::op8
+::tmp1_reg_400 == ::tmp1
+::tmp3_reg_405 == ::tmp3
