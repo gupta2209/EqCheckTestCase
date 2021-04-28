@@ -1,0 +1,121 @@
+transition: (s1 s2) (t1 t2)
+
+(s1 s2)
+cond:
+True
+oper:
+t4_reg_120 =   (dx  << 2)  - dx ;
+t1_reg_110 =   (x__temp << 2)  - x__temp ;
+mul_ln14_reg_115 =   dx  * u;
+
+(t1 t2)
+cond:
+True
+oper:
+shl_ln12 = x << 2;
+t1 = shl_ln12 - x;
+mul_ln14 = dx * u;
+shl_ln15 = dx << 2;
+t4 = shl_ln15 - dx;
+
+transition: (s2 s3) (t2 t3)
+
+(s2 s3)
+cond:
+True
+oper:
+t5_reg_135 =   y  * t4_reg_120__temp;
+t3_reg_130 =   mul_ln14_reg_115__temp  * t1_reg_110__temp ;
+
+(t2 t3)
+cond:
+True
+oper:
+t3 = mul_ln14 * t1;
+t5 = y_read * t4;
+
+
+transition: (s3 s4) (t3 t4)
+
+(s3 s4)
+cond:
+True
+oper:
+sub_ln18_reg_140 =  u   - t3_reg_130__temp  - t5_reg_135__temp ;
+
+(t3 t4)
+cond:
+True
+oper:
+t6 = u - t3;
+sub_ln18 = t6 - t5;
+
+transition: (s4 s5) (t4 t5)
+
+(s4 s5)
+cond:
+True
+oper:
+t7_reg_145 =   dx  * sub_ln18_reg_140__temp;
+
+(t4 t5)
+cond:
+True
+oper:
+t7 = dx * sub_ln18;
+
+transition: (s5 se) (t5 te)
+
+(s5 se)
+cond:
+True
+oper:
+ap_return =  y  + t7_reg_145 ;
+
+(t5 te)
+cond:
+True
+oper:
+add_ln20 = y + t7;
+
+mapping: 
+
+(s1 t1)
+::mul_ln14_reg_115 == ::mul_ln14
+::t1_reg_110 == ::t1
+::t4_reg_120 == ::t4
+
+(s2 t2)
+::mul_ln14_reg_115 == ::mul_ln14
+::t1_reg_110 == ::t1
+::t4_reg_120 == ::t4
+::t3_reg_130 == ::t3
+::t5_reg_135 == ::t5
+
+(s3 t3)
+::mul_ln14_reg_115 == ::mul_ln14
+::sub_ln18_reg_140 == ::sub_ln18
+::t1_reg_110 == ::t1
+::t4_reg_120 == ::t4
+::t3_reg_130 == ::t3
+::t5_reg_135 == ::t5
+
+(s4 t4)
+::mul_ln14_reg_115 == ::mul_ln14
+::sub_ln18_reg_140 == ::sub_ln18
+::t1_reg_110 == ::t1
+::t4_reg_120 == ::t4
+::t3_reg_130 == ::t3
+::t5_reg_135 == ::t5
+::t7_reg_145 == ::t7
+
+(s5 t5)
+::ap_return == ::add_ln20
+::mul_ln14_reg_115 == ::mul_ln14
+::sub_ln18_reg_140 == ::sub_ln18
+::t1_reg_110 == ::t1
+::t4_reg_120 == ::t4
+::t3_reg_130 == ::t3
+::t5_reg_135 == ::t5
+::t7_reg_145 == ::t7
+
