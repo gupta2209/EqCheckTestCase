@@ -1,0 +1,261 @@
+Transition: (s1 s3) (t1 t3)
+
+(s1 s3)
+cond:
+icmp_ln13_fu_241_p2 = 1
+oper:
+if(!(1 == ap_CS_fsm_state3)){
+ap_done = 0 ; 
+}
+    if(!((ap_start == 0) && (1 == ap_CS_fsm_state1))){
+ap_idle = 0 ; 
+}
+    if(!((icmp_ln13_reg_356 == 0) && (1 == ap_CS_fsm_state3))){
+ap_phi_mux_t16_0_phi_fu_210_p4 = t16_0_reg_207 ; 
+}
+    if(!(1 == ap_CS_fsm_state3)){
+ap_ready = 0 ; 
+}
+    if(!((ap_start == 1) && (1 == ap_CS_fsm_state1))){
+out13_ap_vld = 0 ; 
+}
+    if(!(1 == ap_CS_fsm_state2)){
+out30_o = out30_i ; 
+}
+    if(!(1 == ap_CS_fsm_state2)){
+out30_o_ap_vld = 0 ; 
+}
+    if(!(1 == ap_CS_fsm_state3)){
+out31_ap_vld = 0 ; 
+}
+if((ap_start == 0) && (1 == ap_CS_fsm_state1))
+{
+   ap_idle =  1;
+}
+if((ap_start == 1) && (1 == ap_CS_fsm_state1))
+{
+out13_ap_vld =  1;
+   out13 =   ( ( ( in14__temp  & 4294967295 )  - ( in15__temp  & 4294967295 )  ) & 4294967295 ) ;
+   out31 =   (  ( ( ap_phi_mux_t16_0_phi_fu_210_p4 + ( in32__temp  & 4294967295 )  ) & 4294967295 )  & 4294967295 ) ;
+}
+if(((ap_start == 1) && (icmp_ln13_fu_241_p2 == 1)) && (1 == ap_CS_fsm_state1))
+   {
+       t16_0_reg_207 =   ( (  ( (  ( ( ( in7__temp  & 4294967295 )  + ( in12__temp  & 4294967295 )  ) & 4294967295 )  + ( in8__temp  & 4294967295 )  ) & 4294967295 )  - ( in17__temp  & 4294967295 )  ) & 4294967295 ) ;
+   }
+   if((ap_start == 1) && (1 == ap_CS_fsm_state1))
+   {
+       sub_ln11_reg_351 =   ( ( ( in14__temp  & 4294967295 )  - ( in15__temp  & 4294967295 )  ) & 4294967295 ) ;
+       icmp_ln13_reg_356 =   ( ( in2 & 4294967295 )  == ( in1 & 4294967295 )  ? 1 : 0 ) ;
+   }
+   if(((ap_start == 1) && (icmp_ln13_fu_241_p2 == 0)) && (1 == ap_CS_fsm_state1))
+   {
+       t26_1_reg_370 =   ( (  ( ( ( in19__temp  & 4294967295 )  + ( in20__temp  & 4294967295 )  ) & 4294967295 )  +  ( ( ( in3__temp  & 4294967295 )  - ( in4__temp  & 4294967295 )  ) & 4294967295 )  ) & 4294967295 ) ;
+       t23_reg_365 =   ( (  ( (  ( ( ( in3__temp  & 4294967295 )  - ( in4__temp  & 4294967295 )  ) & 4294967295 )  + ( in22__temp  & 4294967295 )  ) & 4294967295 )  +  ( (  ( ( ( in7__temp  & 4294967295 )  + ( in12__temp  & 4294967295 )  ) & 4294967295 )  + ( in8__temp  & 4294967295 )  ) & 4294967295 )  ) & 4294967295 ) ;
+       icmp_ln18_reg_360 =   ( do_twos_complement( ( in9 & 4294967295 )  , 63 )  < do_twos_complement( ( in10 & 4294967295 )  , 63 )  ? 1 : 0 ) ;
+   }
+
+(t1 t3)
+cond:
+icmp_ln13 = 1
+oper:
+t5 = in3_read - in4_read; //%t5 = sub nsw i32 %in3_read, %in4_read
+sub_ln11 = in14_read - in15_read; //%sub_ln11 = sub nsw i32 %in14_read, %in15_read
+add_ln12 = in7_read + in12_read; //%add_ln12 = add i32 %in7_read, %in12_read
+t11 = add_ln12 + in8_read; //%t11 = add i32 %add_ln12, %in8_read
+icmp_ln13 = in2_read == in1_read ? 1 : 0;
+t16 = t11 - in17_read; //%t16 = sub nsw i32 %t11, %in17_read
+//br label %
+t16_0 = t16;
+
+
+Transition: (s1 s2) (t1 t2)
+
+(s1 s2)
+cond:
+icmp_ln13_fu_241_p2 = 0;
+oper:
+if(!(1 == ap_CS_fsm_state3)){
+ap_done = 0 ; 
+}
+    if(!((ap_start == 0) && (1 == ap_CS_fsm_state1))){
+ap_idle = 0 ; 
+}
+    if(!((icmp_ln13_reg_356 == 0) && (1 == ap_CS_fsm_state3))){
+ap_phi_mux_t16_0_phi_fu_210_p4 = t16_0_reg_207 ; 
+}
+    if(!(1 == ap_CS_fsm_state3)){
+ap_ready = 0 ; 
+}
+    if(!((ap_start == 1) && (1 == ap_CS_fsm_state1))){
+out13_ap_vld = 0 ; 
+}
+    if(!(1 == ap_CS_fsm_state2)){
+out30_o = out30_i ; 
+}
+    if(!(1 == ap_CS_fsm_state2)){
+out30_o_ap_vld = 0 ; 
+}
+    if(!(1 == ap_CS_fsm_state3)){
+out31_ap_vld = 0 ; 
+}
+if((ap_start == 0) && (1 == ap_CS_fsm_state1))
+{
+   ap_idle =  1;
+}
+if((ap_start == 1) && (1 == ap_CS_fsm_state1))
+{
+   out13_ap_vld =  1;
+       out13 =   ( ( ( in14__temp  & 4294967295 )  - ( in15__temp  & 4294967295 )  ) & 4294967295 ) ;
+       out31 =   (  ( ( ap_phi_mux_t16_0_phi_fu_210_p4 + ( in32__temp  & 4294967295 )  ) & 4294967295 )  & 4294967295 ) ;
+}
+if(((ap_start == 1) && (icmp_ln13_fu_241_p2 == 1)) && (1 == ap_CS_fsm_state1))
+{
+       t16_0_reg_207 =   ( (  ( (  ( ( ( in7__temp  & 4294967295 )  + ( in12__temp  & 4294967295 )  ) & 4294967295 )  + ( in8__temp  & 4294967295 )  ) & 4294967295 )  - ( in17__temp  & 4294967295 )  ) & 4294967295 ) ;
+}
+if((ap_start == 1) && (1 == ap_CS_fsm_state1))
+{
+       sub_ln11_reg_351 =   ( ( in14__temp )  - ( in15__temp )  ) ;
+       icmp_ln13_reg_356 =   ( ( in2 & 4294967295 )  == ( in1 & 4294967295 )  ? 1 : 0 ) ;
+}
+if(((ap_start == 1) && (icmp_ln13_fu_241_p2 == 0)) && (1 == ap_CS_fsm_state1))
+{
+       t26_1_reg_370 =   ( (  ( ( ( in19__temp  & 4294967295 )  + ( in20__temp  & 4294967295 )  ) & 4294967295 )  +  ( ( ( in3__temp  & 4294967295 )  - ( in4__temp  & 4294967295 )  ) & 4294967295 )  ) & 4294967295 ) ;
+       t23_reg_365 =   ( (  ( (  ( ( ( in3__temp  & 4294967295 )  - ( in4__temp  & 4294967295 )  ) & 4294967295 )  + ( in22__temp  & 4294967295 )  ) & 4294967295 )  +  ( (  ( ( ( in7__temp  & 4294967295 )  + ( in12__temp  & 4294967295 )  ) & 4294967295 )  + ( in8__temp  & 4294967295 )  ) & 4294967295 )  ) & 4294967295 ) ;
+       icmp_ln18_reg_360 =   ( do_twos_complement( ( in9 & 4294967295 )  , 63 )  < do_twos_complement( ( in10 & 4294967295 )  , 63 )  ? 1 : 0 ) ;
+}
+
+(t1 t2)
+cond:
+icmp_ln13 = 0;
+oper:
+t5 = in3_read - in4_read; //%t5 = sub nsw i32 %in3_read, %in4_read
+sub_ln11 = in14_read - in15_read; //%sub_ln11 = sub nsw i32 %in14_read, %in15_read
+add_ln12 = in7_read + in12_read; //%add_ln12 = add i32 %in7_read, %in12_read
+t11 = add_ln12 + in8_read; //%t11 = add i32 %add_ln12, %in8_read
+icmp_ln13 = in2_read == in1_read ? 1 : 0;
+icmp_ln18 = in9_read < in10_read ? 1 : 0; //%icmp_ln18 = icmp slt i32 %in9_read, %in10_read
+add_ln21 = t5 + in22_read; //%add_ln21 = add i32 %t5, %in22_read
+t23 = add_ln21 + t11; //%t23 = add i32 %add_ln21, %t11
+add_ln26 = in19_read + in20_read; //%add_ln26 = add i32 %in19_read, %in20_read
+t26_1 = add_ln26 + t5;
+
+Transition: (s2 s3) (t2 t3)
+
+(s2 s3)
+cond:
+True
+oper:
+if(1 == ap_CS_fsm_state2)
+{
+   out30_o =   ( (  (  ( ( icmp_ln18_reg_360__temp  & 1 ) & 18446744073709551615 )  == 1 ?  ( (  ( ( t23_reg_365__temp  - ( in24__temp  & 4294967295 )  ) & 4294967295 )  + ( in27__temp  & 4294967295 )  ) & 4294967295 )  :  t26_1_reg_370__temp  )  + ( in29__temp  & 4294967295 )  ) & 4294967295 ) ;
+}
+if(1 == ap_CS_fsm_state2)
+{
+   out30_o_ap_vld =  1;
+       out13 =   ( ( ( in14__temp  & 4294967295 )  - ( in15__temp  & 4294967295 )  ) & 4294967295 ) ;
+       out31 =   (  ( ( ap_phi_mux_t16_0_phi_fu_210_p4 + ( in32__temp  & 4294967295 )  ) & 4294967295 )  & 4294967295 ) ;
+}
+if(1 == ap_CS_fsm_state2)
+{
+   t16_1_reg_380 =   ( (  (  ( ( icmp_ln18_reg_360__temp  & 1 ) & 18446744073709551615 )  == 1 ?  ( (  ( ( t23_reg_365__temp  - ( in24__temp  & 4294967295 )  ) & 4294967295 )  + ( in27__temp  & 4294967295 )  ) & 4294967295 )  :  t26_1_reg_370__temp  )  - ( in28__temp  & 4294967295 )  ) & 4294967295 ) ;
+}
+
+(t2 t3)
+cond:
+True
+oper:
+if(icmp_ln18){
+t25 = t23 - in24_read; //%t25 = sub i32 %t23, %in24_read
+t26 = t25 + in27_read; //%t26 = add i32 %t25, %in27_read
+}
+t26_2 = icmp_ln18 ? t26 : t26_1; //%t26_2 = select i1 %icmp_ln18, i32 %t26, i32 %t26_1
+t16_1 = t26_2 - in28_read; //%t16_1 = sub nsw i32 %t26_2, %in28_read
+add_ln28 = t26_2 + in29_read; //%add_ln28 = add nsw i32 %t26_2, %in29_read
+out30 = add_ln28;
+
+Transition: (s3 se) (t3 te)
+
+(s3 se)
+cond:
+True
+oper:
+if((icmp_ln13_reg_356 == 0) && (1 == ap_CS_fsm_state3))
+{
+   ap_phi_mux_t16_0_phi_fu_210_p4 =  t16_1_reg_380__temp ;
+}
+if(1 == ap_CS_fsm_state3)
+{
+   ap_done =  1;
+    if(ap_done==1){
+  ap_return =  ( (  ( ( sub_ln11_reg_351 +  ( ( ap_phi_mux_t16_0_phi_fu_210_p4 + ( in32 & 4294967295 )  ) & 4294967295 )  ) & 4294967295 )  + ( out30_o & 4294967295 )  ) & 4294967295 ) ;
+    }
+}
+if(1 == ap_CS_fsm_state3)
+{
+   ap_ready =  1;
+}
+if(1 == ap_CS_fsm_state3)
+{
+   out31_ap_vld =  1;
+       out13 =   ( ( in14__temp )  - ( in15__temp  )  )  ;
+       out31 =   (  ( ( ap_phi_mux_t16_0_phi_fu_210_p4 + ( in32__temp  & 4294967295 )  ) & 4294967295 )  & 4294967295 ) ;
+}
+       icmp_ln13_reg_356 =  icmp_ln13_reg_356__temp ;
+if((icmp_ln13_reg_356 == 0) && (1 == ap_CS_fsm_state3))
+{
+   t16_0_reg_207 =  t16_1_reg_380__temp ;
+}
+
+
+(t3 te)
+cond:
+True
+oper:
+if(!icmp_ln13){
+	t16_0 = t16_1;
+}
+add_ln30 = t16_0 + in32_read; //%add_ln30 = add nsw i32 %t16_0, %in32_read
+out30_read = out30; //%out30_read = call i32 @_ssdm_op_Read.ap_auto.i32P(i32* %out30) nounwind
+add_ln31 = sub_ln11 + add_ln30; //%add_ln31 = add i32 %sub_ln11, %add_ln30
+add_ln31_1 = add_ln31 + out30_read; //%add_ln31_1 = add i32 %add_ln31, %out30_rea
+
+mapping:
+
+(s1 t1)
+::out30_i == ::out30
+::icmp_ln13_fu_241_p2 == ::icmp_ln13
+::icmp_ln18_reg_360 == ::icmp_ln18
+::sub_ln11_reg_351 == ::sub_ln11
+::t16_0_reg_207 == ::t16
+::t16_0_reg_207 == ::t16_0
+::t23_reg_365 == ::t23
+::t26_1_reg_370 == ::t26_1
+
+(s2 t2)
+::out30_i == ::out30
+::out30_o == ::add_ln28
+::out30_o == ::out30
+::t16_0_reg_207 == ::t16
+::t16_0_reg_207 == ::t16_0
+::ap_phi_mux_t16_0_phi_fu_210_p4 == ::t16
+::icmp_ln13_fu_241_p2 == ::icmp_ln13
+::icmp_ln13_fu_241_p2 == ::zero
+::icmp_ln18_reg_360 == ::icmp_ln18
+::sub_ln11_reg_351 == ::sub_ln11
+::t16_1_reg_380 == ::t16_1
+::t23_reg_365 == ::t23
+::t26_1_reg_370 == ::t26_1
+
+(s3 t3)
+::t16_0_reg_207 == ::t16_0
+::ap_return == ::add_ln31_1
+::out30_o == ::add_ln28
+::out30_o == ::out30
+::ap_phi_mux_t16_0_phi_fu_210_p4 == ::t16_0
+::icmp_ln13_fu_241_p2 == ::icmp_ln13
+::icmp_ln18_reg_360 == ::icmp_ln18
+::sub_ln11_reg_351 == ::sub_ln11
+::t16_1_reg_380 == ::t16_1
+::t23_reg_365 == ::t23
+::t26_1_reg_370 == ::t26_1
+
