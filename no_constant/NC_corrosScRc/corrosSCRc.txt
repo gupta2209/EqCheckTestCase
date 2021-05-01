@@ -1,0 +1,190 @@
+Transition: (s1 s2) (t1 t2)
+
+(s1 s2)
+cond:
+True
+oper:
+op5_reg_246 =   G1 * i3 ;
+op5_2_reg_251 = i4  * i3 ;
+op4_reg_239 =   G2  * i1 ;
+
+(t1 t2)
+cond:
+True
+oper:
+op4 = G2_read * i1_read; 
+op5 = G1_read * i3_read; 
+op5_2 = i4_read * i3_read;
+
+Transition: (s2 s3) (t2 t3)
+
+(s2 s3)
+cond:
+True
+oper:
+tmp_reg_257 =   ( G1  > 10 ? 1 :  0 ) ;
+tmp_6_reg_267 =   (  (  ( G1  > 10 ? 1 :  0 )  == 1 ?  ( op5_reg_246__temp  + GG1__temp )  :  op5_2_reg_251__temp  )  < op4_reg_239__temp  ? 1 : 0 ) ;
+op5_1_reg_262 =   op5_reg_246__temp  + GG1__temp ;
+
+(t2 t3)
+cond:
+True
+oper:
+icmp_ln16 = G1_read > 10 ? 1 : 0; //%icmp_ln16 = icmp sgt i32 %G1_read, 10
+op5_1 = op5 + GG1_read; //%op5_1 = add nsw i32 %op5, %GG1_read
+op5_3 = icmp_ln16 ? op5_1 : op5_2; //%op5_3 = select i1 %icmp_ln16, i32 %op5_1, i32 %op5_2
+icmp_ln27 = op5_3 < op4 ? 1 : 0;
+
+Transition: (s3 s4) (t3 t4)
+
+(s3 s4)
+cond:
+True
+oper:
+if(((tmp_6_reg_267 == 0) && (tmp_reg_257 == 0)) && (1 == ap_CS_fsm_state3))
+{
+   op3_reg_272 =   G1  * i2 ;
+}
+if((tmp_6_reg_267 == 1) && (1 == ap_CS_fsm_state3))
+{
+   op6_3_reg_277 =   G2  * i4 ;
+}
+if(1 == ap_CS_fsm_state3)
+{
+   op8_reg_287 =   G2  * i3 ;
+   op7_reg_282 =   G1  * i4 ;
+}
+
+(t3 t4)
+cond:
+True
+oper:
+if(!icmp_ln16 & !icmp_ln27){
+	op3 = G1_read * i2_read; //%op3 = mul nsw i32 %G1_read, %i2_read
+}
+if(icmp_ln27){
+	op6_3 = G2_read * i4_read; //%op6_3 = mul nsw i32 %G2_read, %i4_read
+}
+op7 = G1_read * i4_read; //%op7 = mul nsw i32 %G1_read, %i4_read
+op8 = G2_read * i3_read;
+
+Transition: (s4 s5) (t4 t5)
+
+(s4 s5)
+cond:
+True
+oper:
+op14_reg_298 =   op8_reg_287__temp  + i6__temp  + op7_reg_282__temp ;
+op13_reg_292 =   ((tmp_6_reg_267__temp  == 1) ?  (op6_3_reg_277__temp - i3)  :   ((tmp_reg_257__temp  == 1) ?  (op5_1_reg_262__temp  - op4_reg_239__temp)  :   ( op5_2_reg_251__temp  - op3_reg_272__temp))) + G1  + op4_reg_239__temp;
+
+(t4 t5)
+cond:
+True
+oper:
+if(icmp_ln16 & !icmp_ln27){
+	op6 = op5_1 - op4; //%op6 = sub nsw i32 %op5_1, %op4
+}
+if(!icmp_ln16 & !icmp_ln27){
+	op6_1 = op5_2 - op3; //%op6_1 = sub nsw i32 %op5_2, %op3
+}
+if(!icmp_ln27){
+	op6_2 = icmp_ln16 ? op6: op6_1; //%op6_2 = select i1 %icmp_ln16, i32 %op6, i32 %op6_1
+}
+if(icmp_ln27){
+	op6_4 = op6_3 - i3_read; //%op6_4 = sub nsw i32 %op6_3, %i3_read
+}
+op6_5 = icmp_ln27 ? op6_4 : op6_2; //%op6_5 = select i1 %icmp_ln27, i32 %op6_4, i32 %op6_2
+add_ln47 = op6_5 + G1_read; //%add_ln47 = add i32 %op6_5, %G1_read
+op13 = add_ln47 + op4; //%op13 = add i32 %add_ln47, %op4
+add_ln49 = op8 + i6_read; //%add_ln49 = add i32 %op8, %i6_read
+op14 = add_ln49 + op7; //%op14 = add i32 %add_ln49, %op7
+
+Transition: (s5 se) (t5 te)
+
+(s5 se)
+cond:
+True
+oper:
+if(1 == ap_CS_fsm_state5)
+{
+   ap_done =  1;
+	if(ap_done==1){
+  ap_return =  op13_reg_292 + op14_reg_298 ;
+	}
+}
+if(1 == ap_CS_fsm_state5)
+{
+   ap_ready =  1;
+}
+if(1 == ap_CS_fsm_state5)
+{
+   o1_ap_vld =  1;
+       o1 =   ( op13_reg_292__temp  & 4294967295 ) ;
+       o2 =   ( op14_reg_298__temp  & 4294967295 ) ;
+}
+if(1 == ap_CS_fsm_state5)
+{
+   o2_ap_vld =  1;
+       o1 =   ( op13_reg_292__temp  & 4294967295 ) ;
+       o2 =   ( op14_reg_298__temp  & 4294967295 ) ;
+}
+
+(t5 te)
+cond:
+True
+oper:
+o3_read = *o3; //%o3_read = call i32 @_ssdm_op_Read.ap_auto.i32P(i32* %o3) nounwind
+o4_read = *o4; //%o4_read = call i32 @_ssdm_op_Read.ap_auto.i32P(i32* %o4) nounwind
+add_ln52 = o3_read + o4_read; //%add_ln52 = add i32 %o3_read, %o4_read
+add_ln52_1 = op13 + op14; //%add_ln52_1 = add i32 %op13, %op14
+add_ln52_2 = add_ln52_1 + add_ln52; //%add_ln52_2 = add i32 %add_ln52_1, %add_ln52
+
+mapping:
+
+(s1 t1)
+::op4_reg_239 == ::op4
+::op5_2_reg_251 == ::op5_2
+::op5_reg_246 == ::op5
+
+(s2 t2)
+::op4_reg_239 == ::op4
+::op5_1_reg_262 == ::op5_1
+::op5_2_reg_251 == ::op5_2
+::op5_reg_246 == ::op5
+::tmp_6_reg_267 == ::icmp_ln27
+::tmp_reg_257 == ::icmp_ln16
+
+(s3 t3)
+::op4_reg_239 == ::op4
+::op5_1_reg_262 == ::op5_1
+::op5_2_reg_251 == ::op5_2
+::op5_reg_246 == ::op5
+::op7_reg_282 == ::op7
+::op8_reg_287 == ::op8
+::tmp_6_reg_267 == ::icmp_ln27
+::tmp_reg_257 == ::icmp_ln16
+
+(s4 t4)
+::op13_reg_292 == ::op13
+::op14_reg_298 == ::op14
+::op4_reg_239 == ::op4
+::op5_1_reg_262 == ::op5_1
+::op5_2_reg_251 == ::op5_2
+::op5_reg_246 == ::op5
+::op7_reg_282 == ::op7
+::op8_reg_287 == ::op8
+::tmp_6_reg_267 == ::icmp_ln27
+::tmp_reg_257 == ::icmp_ln16
+
+(s5 t5)
+::ap_return == ::add_ln52_1
+::op13_reg_292 == ::op13
+::op14_reg_298 == ::op14
+::op4_reg_239 == ::op4
+::op5_1_reg_262 == ::op5_1
+::op5_2_reg_251 == ::op5_2
+::op5_reg_246 == ::op5
+::op7_reg_282 == ::op7
+::op8_reg_287 == ::op8
+::tmp_6_reg_267 == ::icmp_ln27
+::tmp_reg_257 == ::icmp_ln16
